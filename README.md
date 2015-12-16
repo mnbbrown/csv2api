@@ -1,5 +1,18 @@
+[![Build Status](https://ci.matthewbrown.io/api/badges/mnbbrown/csv2api/status.svg)](https://ci.matthewbrown.io/mnbbrown/csv2api)
 
 **csv2api** is a no frills daemon that turns csv files into an http API.
+A couple of things to note:
+
+- The API returns JSON by default. 
+- It assumes the first line of the CSV file is the headers. 
+- csv2api will replace all spaces with underscores and make the headers lowercase.
+
+#### Install from docker
+
+```sh
+docker pull mnbbrown/csv2api:latest
+docker run -d -v data:/tmp/data -p 8080:8080 mnbbrown/csv2api:latest
+```
 
 #### Install from source
 
@@ -26,6 +39,8 @@ go build
 APP_ENV="production" PORT=8080 SERVE_FROM="/tmp/data" API_KEY="xyz" ./csv2api
 ```
 
+#### API
+
 Request data using [httpie](http://httpie.org):
 
 ```sh
@@ -38,5 +53,3 @@ http -v GET http://localhost:8080/api/v1/people Authorization:"Bearer xyz" Accep
 # Name,DOB
 # Matthew Brown,18/09/1992
 ```
-
-The API returns JSON by default. It assumes the first line of the CSV file is the headers. It will replace all spaces with underscores (" " => "_") and make the headers lowercase.
