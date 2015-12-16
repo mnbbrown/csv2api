@@ -7,7 +7,7 @@ build:
 
 publish: 
   docker: 
-    email: me@matthewbrown.io
+    email: "me@matthewbrown.io"
     password: $$DOCKER_HUB_PASSWORD
     repo: mnbbrown/csv2api
     storage_driver: overlay
