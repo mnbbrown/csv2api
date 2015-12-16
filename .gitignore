@@ -1,3 +1,5 @@
 csv2api
 .env
 *.swp
+data
+build

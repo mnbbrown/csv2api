@@ -137,19 +137,30 @@ func main() {
 		log.SetFormatter(&log.JSONFormatter{})
 	}
 
+	API_KEY := conf.Get("API_KEY", "")
+	if API_KEY == "" {
+		log.Infof("API_KEY not set. Open to public.")
+	}
+
 	SERVE_FROM = conf.Get("SERVE_FROM", "./data")
 	if SERVE_FROM == "" {
 		log.Fatal("SERVE_FROM must be set.")
 	}
 
 	log.WithFields(log.Fields{
-		"branch": branch,
-		"commit": commit,
-		"date":   date,
-	}).Infof("Starting CSV2API. Serving from %s", SERVE_FROM)
+		"branch":       branch,
+		"commit":       commit,
+		"date":         date,
+		"serving_from": SERVE_FROM,
+		"api_key":      API_KEY,
+	}).Infoln("Starting CSV2API")
 
 	r := mux.NewRouter()
-	r.Handle("/api/v1/{filename}", apiKeyMiddleware("abcded", handleAPI))
+	if API_KEY == "" {
+		r.Handle("/api/v1/{filename}", http.HandlerFunc(handleAPI))
+	} else {
+		r.Handle("/api/v1/{filename}", apiKeyMiddleware(API_KEY, handleAPI))
+	}
 	http.ListenAndServe(":8080", r)
 
 }
