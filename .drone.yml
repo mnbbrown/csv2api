@@ -1,0 +1,16 @@
+build:
+    image: mnbbrown/ci:latest
+    commands:
+        - make deps
+        - make build-linux
+
+publish:
+    docker:
+        repo: mnbbrown/csv2api
+        username: mnbbrown
+        password: $$DOCKER_HUB_PASSWORD
+        email: me@matthewbrown.io
+        tag:
+            - $$COMMIT
+            - latest
+        storage_driver: overlay

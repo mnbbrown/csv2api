@@ -3,3 +3,4 @@ csv2api
 *.swp
 data
 build
+.drone.sec.yml
