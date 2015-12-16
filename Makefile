@@ -6,6 +6,9 @@ LD_FLAGS = "-s -X main.branch=${BRANCH} -X main.commit=$(COMMIT) -X main.date=$(
 
 all: run
 
+deps:
+	go get -t -v ./...	
+
 clean:
 	rm -rf build
 
