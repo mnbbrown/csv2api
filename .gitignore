@@ -4,3 +4,5 @@ csv2api
 data
 build
 .drone.sec.yml
+coverage.html
+coverage.out

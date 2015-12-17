@@ -2,16 +2,17 @@
 build: 
   commands: 
     - "make deps"
+    - "make test"
     - "make build-linux"
   image: "mnbbrown/ci:latest"
 
-publish: 
-  docker: 
+publish:
+  docker:
+    repo: mnbbrown/csv2api
+    username: mnbbrown
     email: "me@matthewbrown.io"
     password: $$DOCKER_HUB_PASSWORD
-    repo: mnbbrown/csv2api
-    storage_driver: overlay
     tag: 
       - $$COMMIT
       - latest
-    username: mnbbrown
+    storage_driver: overlay
