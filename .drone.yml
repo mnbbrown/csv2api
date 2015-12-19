@@ -1,5 +1,3 @@
-debug: true
-
 build:
     image: mnbbrown/ci:latest
     commands: 
@@ -8,10 +6,10 @@ build:
         - make build-linux
 
 publish:
-  docker:
-    username: mnbbrown
-    password: $$DOCKER_HUB_PASSWORD
-    email: me@matthewbrown.io
-    repo: mnbbrown/csv2api
-    tag: latest
-    file: Dockerfile
+    docker:
+        username: mnbbrown
+        password: $$DOCKER_HUB_PASSWORD
+        email: me@matthewbrown.io
+        repo: mnbbrown/csv2api
+        tag: latest
+        file: Dockerfile
