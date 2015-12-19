@@ -10,7 +10,7 @@ A couple of things to note:
 #### Install from docker
 
 ```sh
-docker pull mnbbrown/csv2api:latest
+docker pull mnbbrown/csv2api:latest # or mnbbrown/csv2api:develop for the latest development version
 docker run -d -v data:/tmp/data -p 8080:8080 mnbbrown/csv2api:latest
 ```
 
