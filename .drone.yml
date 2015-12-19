@@ -15,4 +15,7 @@ publish:
         password: "$$DOCKER_HUB_PASSWORD"
         email: "$$DOCKER_HUB_EMAIL"
         repo: "mnbbrown/csv2api"
-        tag: latest
+        tag:
+            - $$COMMIT
+            - latest
+        driver: overlay
