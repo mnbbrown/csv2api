@@ -11,7 +11,7 @@ publish:
   docker:
     username: mnbbrown
     password: $$DOCKER_HUB_PASSWORD
-    email: me@matthewbrown.io
+    email: "me@matthewbrown.io"
     repo: mnbbrown/csv2api
     tag: latest
     file: Dockerfile
