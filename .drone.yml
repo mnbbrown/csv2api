@@ -1,17 +1,17 @@
 debug: true
 
-build: 
+build:
+    image: mnbbrown/ci:latest
     commands: 
-        - "make deps"
-        - "make test"
-        - "make build-linux"
-    image: "mnbbrown/ci:latest"
+        - make deps
+        - make test
+        - make build-linux
 
 publish:
-    docker:
-        registry: registry.matthewbrown.io
-        repo: mnbbrown/csv2api
-        tag:
-            - $$COMMIT
-            - latest
-        storage_driver: overlay
+  docker:
+    username: mnbbrown
+    password: $$DOCKER_HUB_PASSWORD
+    email: me@matthewbrown.io
+    repo: mnbbrown/csv2api
+    tag: latest
+    file: Dockerfile
