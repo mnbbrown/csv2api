@@ -53,3 +53,13 @@ http -v GET http://localhost:8080/api/v1/people Authorization:"Bearer xyz" Accep
 # Name,DOB
 # Matthew Brown,18/09/1992
 ```
+
+##### Filtering
+
+You can filter the fields the API returns with the `fields` query parameter as a comma separated list of fields. i.e. `?fields=name,dob` will return name and dob.
+
+```sh
+# as JSON
+http -v GET http://localhost:8080/api/v1/people?fields=dob Authorization:"Bearer xyz"
+# [{"dob":"18/09/1992"},...]
+```
