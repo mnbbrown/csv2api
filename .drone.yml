@@ -1,16 +1,17 @@
-build: 
-  commands: 
-    - "make deps"
-    - "make test"
-    - "make build-linux"
-  image: "mnbbrown/ci:latest"
+debug: true
+
+build:
+    image: mnbbrown/ci:latest
+    commands: 
+        - make deps
+        - make test
+        - make build-linux
 
 publish:
   docker:
-    repo: mnbbrown/csv2api
     username: mnbbrown
-    email: "me@matthewbrown.io"
     password: $$DOCKER_HUB_PASSWORD
-    tag: 
-      - $$COMMIT
-      - latest
+    email: me@matthewbrown.io
+    repo: mnbbrown/csv2api
+    tag: latest
+    file: Dockerfile
