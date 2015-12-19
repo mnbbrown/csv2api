@@ -18,4 +18,4 @@ publish:
         tag:
             - $$COMMIT
             - latest
-        driver: overlay
+        storage_driver: overlay
