@@ -13,7 +13,11 @@ clean:
 	rm -rf build
 
 build: clean *.go
-	CGO_ENABLED=0 go build -ldflags $(LD_FLAGS) -a -installsuffix cgo -o build/csv2api
+	go build -ldflags $(LD_FLAGS) -a -installsuffix cgo -o build/csv2api
+
+
+secure: 
+	drone secure --repo mnbbrown/csv2api
 
 run: quick
 		./build/csv2api
@@ -25,8 +29,5 @@ coverage:
 	go test . -coverprofile=coverage.out
 	go tool cover -html=coverage.out -o coverage.html
 
-build-linux: clean *.go
-	CGO_ENABLED=0 GOOS=linux go build -ldflags $(LD_FLAGS) -a -installsuffix cgo -o build/csv2api.linux
-
-docker: build-linux
-	docker build -t mnbbrown/csv2api:latest .
+docker: build
+	docker build -t mnbbrown/csv2api .

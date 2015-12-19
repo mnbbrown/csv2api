@@ -1,15 +1,18 @@
 build:
-    image: mnbbrown/ci:latest
-    commands: 
-        - make deps
-        - make test
-        - make build-linux
+  image: mnbbrown/ci:latest
+  environment:
+    - GOOS=linux
+    - GOARCH=amd64
+    - CGO_ENABLED=0
+  commands:
+    - make deps
+    - make test
+    - make build
 
 publish:
-    docker:
-        username: mnbbrown
-        password: $$DOCKER_HUB_PASSWORD
-        email: me@matthewbrown.io
-        repo: mnbbrown/csv2api
-        tag: latest
-        file: Dockerfile
+  docker:
+    username: mnbbrown
+    password: $$DOCKER_HUB_PASSWORD
+    email: $$DOCKER_HUB_EMAIL
+    repo: mnbbrown/csv2api
+    tag: latest
