@@ -22,6 +22,9 @@ secure:
 run: quick
 		./build/csv2api
 
+quick:
+	go build -o build/csv2api
+
 test:
 		go test -v ./...
 
