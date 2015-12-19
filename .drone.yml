@@ -19,3 +19,16 @@ publish:
             - $$COMMIT
             - latest
         storage_driver: overlay
+        when:
+            branch: master
+    docker:
+        username: "mnbbrown"
+        password: "$$DOCKER_HUB_PASSWORD"
+        email: "$$DOCKER_HUB_EMAIL"
+        repo: "mnbbrown/csv2api"
+        tag:
+            - $$COMMIT
+            - develop
+        storage_driver: overlay
+        when:
+            branch: develop
